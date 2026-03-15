@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#An event listener looking for STATE changes on raspberry pi ethernet ports. On changes, writes to a tmp file read by (and displayed) a conky desktop monitor.
+#An event listener looking for STATE changes on raspberry pi ethernet ports. On changes, writes to a tmp file read by (and displayed by) a conky desktop monitor.
 
 DEVICE=""
 STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our SSD
