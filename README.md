@@ -7,7 +7,7 @@ This repo solves the ethernet monitoring problem with a custom listener.
 ## Features
 
 - **Event-Driven Networking**  
-Uses `nmcli device status` to detect a state change with 0% idle CPU usage.
+Uses `nmcli monitor` command to detect a state change with 0% idle CPU usage.
 - **Modular Design**  
 A `Systemd` service handleS background logic so Conky stays lean.
 	
