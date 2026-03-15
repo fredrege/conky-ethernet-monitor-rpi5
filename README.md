@@ -57,5 +57,5 @@ Conky is probably loading before the desktop layout finished loading. Try increa
 ```
 nano $HOME/.config/autostart/conky.desktop
 ```
-change sleep 5 to sleep 10. Save, close, and reboot.
+	change sleep 5 to sleep 10. Save, close, and reboot.
 - Conky positioning doesn't seem to follow adjusted values.
