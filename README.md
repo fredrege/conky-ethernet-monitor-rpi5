@@ -13,7 +13,7 @@ A `Systemd` service handleS background logic so Conky stays lean.
 	
 ## Requirements
 - An updated and upgraded Linux OS (tested on Debian but may work on others)
-- [Conky for rpi5](https://github.com/Botspot/rpi_conky)
+- A running variant of Navaspirits's [Conky](https://github.com/Botspot/rpi_conky)
 - NetworkManager (for `nmcli`)
 
 ## Installation
