@@ -26,7 +26,6 @@ A `Systemd` service handleS background logic so Conky stays lean.
 ```
 2. Run the installer
 ```
-chmod +x install.sh
 ./install.sh
 ```
 3. Update Conky  
