@@ -22,7 +22,7 @@ A `Systemd` service handleS background logic so Conky stays lean.
 ```
     cd $HOME
     git clone https://github.com/fredrege/conky-ethernet-monitor-rpi5.git
-    cd conky-ethernet-monitor
+    cd conky-ethernet-monitor-rpi5
 ```
 2. Run the installer
 ```
