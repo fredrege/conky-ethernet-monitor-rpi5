@@ -12,8 +12,9 @@ Uses `nmcli device status` to detect a state change with 0% idle CPU usage.
 A `Systemd` service handleS background logic so Conky stays lean.
 	
 ## Requirements
-- An updated and upgraded Linux OS (tested on Debian but may work on others)
-- A running variant of Navaspirits's [Conky](https://github.com/Botspot/rpi_conky)
+- An updated and upgraded Linux OS (tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors)
+- A running variant of Navaspirits's [Conky](https://github.com/Botspot/rpi_conky).
+[Pi-apps](https://pi-apps.io/install/) ships with Conky and Conky Rings.
 - NetworkManager (for `nmcli`)
 
 ## Installation
