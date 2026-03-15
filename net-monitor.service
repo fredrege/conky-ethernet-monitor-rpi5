@@ -1,5 +1,5 @@
 [Unit]
-Description=Ethernet Status Monitor and Notifier
+Description=Ethernet Status Monitor
 After=network.target
 
 [Service]
