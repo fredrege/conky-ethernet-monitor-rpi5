@@ -13,9 +13,9 @@ A `Systemd` service handleS background logic so Conky stays lean.
 	
 ## Requirements
 - An updated and upgraded Linux OS (tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors)
-- A running variant of Navaspirits's [Conky](https://github.com/Botspot/rpi_conky).
-[Pi-apps](https://pi-apps.io/install/) ships with Conky and Conky Rings.
-- NetworkManager (for `nmcli`)
+- Conky desktop monitor (installed and running on startup before you install this repository.
+If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
+- Run `nmcli -v` from your terminal. If it returns a result, your system should have access to the utility.
 
 ## Installation
 1. Clone the repository  
@@ -49,3 +49,13 @@ Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)
 	The monitor script will create `eth_status.txt`.
 	
 	Save and close `.conkyrc`. If `.conkyrc` was running, it will restart automatically. 
+
+## Troubleshooting
+
+- Your conky window resizes into a small window during OS startup.
+Conky is probably loading before the desktop layout finished loading. Try increasing the sleep timer before the application loads:
+```
+nano $HOME/.config/autostart/conky.desktop
+```
+change sleep 5 to sleep 10. Save, close, and reboot.
+- Conky positioning doesn't seem to follow adjusted values.
