@@ -12,7 +12,7 @@ Instead if constant polling, this upgrade uses `nmcli monitor` to detect state c
 A `Systemd` service handles background logic so Conky stays lean.
 	
 ## Requirements
-- An updated and upgraded Linux OS
+- An updated and upgraded Linux OS\n
 Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
 - Conky desktop monitor
   	Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
