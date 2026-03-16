@@ -28,9 +28,13 @@ for service in net-monitor.service; do
     sed -i "s|ExecStart=.*|ExecStart=$BIN_DIR/${service%.service}.sh|" "$SYSTEMD_DIR/$service"
 done
 
+# 5. add a tmp file owned by the current user
+touch /tmp/eth_status.txt
+chown $USER:$USER /tmp/eth_status.txt
+
 echo "Files copied..."
 
-# 5. Reload systemd and enable the service
+# 6. Reload systemd and enable the service
 echo "Reloading systemd user daemon..."
 systemctl --user daemon-reload
 systemctl --user enable net-monitor.service
