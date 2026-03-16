@@ -30,7 +30,7 @@ cd conky-ethernet-monitor-rpi5
 ```
 ./install.sh
 ```
-3. Update Conky  
+3. Update Conky
 Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)  
 ```
  nano $HOME/.conkyrc
