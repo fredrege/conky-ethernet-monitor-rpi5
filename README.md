@@ -13,11 +13,11 @@ A `Systemd` service handles background logic so Conky stays lean.
 	
 ## Requirements
 - An updated and upgraded Linux OS
-  Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
+  	Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
 - Conky desktop monitor
-  Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
+  	Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
 - An up and running NetworkManager utility
-  Run `nmcli -t` from your terminal to confirm.
+  	Run `nmcli -t` from your terminal to confirm.
 
 ## Installation
 1. Clone the repository  
