@@ -41,7 +41,7 @@ Replace the default networking markup with the following:
 ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 ```
 Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor.
-4. Test your installation
+4.  Test your installation
 Plug and unlug your Pi's ethernet cable to test the experience. The UI should toggle between verbose "CONNECTED" content and a shorter red "DISCONNECTED" statement, respectively.
 
 ## Troubleshooting
