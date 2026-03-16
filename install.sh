@@ -21,7 +21,7 @@ chmod +x "$BIN_DIR/net-monitor.sh"
 # 3. Copy the conky markup content
 cp eth-markup.txt "$CONFIG_DIR/"
 
-# 3. Copy service file and update the path dynamically
+# 4. Copy service file and update the path dynamically
 # This uses 'sed' to replace a placeholder with the user's actual home path
 for service in net-monitor.service; do
     cp "$service" "$SYSTEMD_DIR/"
@@ -30,7 +30,7 @@ done
 
 echo "Files copied..."
 
-# 4. Reload systemd and enable the service
+# 5. Reload systemd and enable the service
 echo "Reloading systemd user daemon..."
 systemctl --user daemon-reload
 systemctl --user enable net-monitor.service
