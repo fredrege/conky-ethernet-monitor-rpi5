@@ -22,7 +22,8 @@ STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our 
     # Assign the first detected device to your primary variable
     DEVICE="${ETH_DEVICES[0]}"
 
-    CNCTD_STRING=$(<$HOME/.config/.txt)
+    MRKUP_FILE="${HOME}/.config/conky/eth-markup.txt"
+    CNCTD_STRING="$(cat "$MRKUP_FILE")"
     
     # For Raspberry Pis with multiple ports, create dynamic variables
     for i in "${!ETH_DEVICES[@]}"; do
