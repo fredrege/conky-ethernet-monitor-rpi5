@@ -2,14 +2,8 @@
 
 #An event listener looking for STATE changes on raspberry pi ethernet ports. On changes, writes to a tmp file read by (and displayed by) a conky desktop monitor.
 
-DEVICE=""
 STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our SSD
-CNCTD_STRING="\${color green}CONNECTED
-\${voffset 4}\${color #505050}IP on $DEVICE \$alignr \${color #AAAAAA}\${addr $DEVICE}
-\${color #505050}Down \$alignr \${color #AAAAAA}\${downspeed $DEVICE}/sec
-\${color #505050}Up \$alignr \${color #AAAAAA}\${upspeed $DEVICE}/sec
-\${color #505050}Downloaded: \$alignr \${color #AAAAAA}\${totaldown $DEVICE}
-\${color #505050}Uploaded: \$alignr \${color #AAAAAA}\${totalup $DEVICE}"
+
 ### end of variable declarations
 
 #1. Let the desktop settle in after login
@@ -27,6 +21,13 @@ CNCTD_STRING="\${color green}CONNECTED
     
     # Assign the first detected device to your primary variable
     DEVICE="${ETH_DEVICES[0]}"
+
+    CNCTD_STRING="\${color green}CONNECTED
+\${voffset 4}\${color #505050}IP on $DEVICE \$alignr \${color #AAAAAA}\${addr $DEVICE}
+\${color #505050}Down \$alignr \${color #AAAAAA}\${downspeed $DEVICE}/sec
+\${color #505050}Up \$alignr \${color #AAAAAA}\${upspeed $DEVICE}/sec
+\${color #505050}Downloaded: \$alignr \${color #AAAAAA}\${totaldown $DEVICE}
+\${color #505050}Uploaded: \$alignr \${color #AAAAAA}\${totalup $DEVICE}"
     
     # For Raspberry Pis with multiple ports, create dynamic variables
     for i in "${!ETH_DEVICES[@]}"; do
