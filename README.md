@@ -22,23 +22,23 @@ A `Systemd` service handles background logic so Conky stays lean.
 ## Installation
 1. Clone the repository  
 ```
-	cd $HOME
-    git clone https://github.com/fredrege/conky-ethernet-monitor-rpi5.git
-    cd conky-ethernet-monitor-rpi5
+cd $HOME
+git clone https://github.com/fredrege/conky-ethernet-monitor-rpi5.git
+cd conky-ethernet-monitor-rpi5
 ```
 2. Run the installer
 ```
-	./install.sh
+./install.sh
 ```
 3. Update Conky  
 Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)  
 	```
-	nano $HOME/.conkyrc
+nano $HOME/.conkyrc
 	```
 	Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later).
 	Replace the default markup with the following:
 	```
-	${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
+${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 	```
 	
 	Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor. 
