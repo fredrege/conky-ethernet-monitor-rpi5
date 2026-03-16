@@ -64,3 +64,4 @@ Within .conkyrc, the minimum width is likely set too high.
 nano $HOME/.conkyrc
 ```
 Change `minimum_width = 250` to `minimum_width = 160`. Save your change - conky shoudld reload and reposition itself appropriately.
+Make sure the utility doesn't "land" on your Taskbar (it can cause UI problems later). gap_x=50 and gap_y=120 work if alignment='top_right'
