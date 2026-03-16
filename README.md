@@ -1,5 +1,8 @@
 # Network Status Upgrade for Conky on Raspberry Pi
 
+<img width="300" alt="eth-connected" src="https://github.com/user-attachments/assets/dd0ee941-7035-42ed-a0d0-6ec44a72e582" />
+<img width="300" alt="eth-disconnected" src="https://github.com/user-attachments/assets/e1e46e7b-89d0-4ce2-9ebf-c06369643915" />
+
 Conky's `${if_up}` monitoring function works well with native Wi-Fi devices (wlan0), but not-so-much with default ethernet devices (eth0 or end0): some state changes don't update the UI.
 
 This repo solves Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
