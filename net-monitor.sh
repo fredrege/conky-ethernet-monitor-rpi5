@@ -22,12 +22,7 @@ STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our 
     # Assign the first detected device to your primary variable
     DEVICE="${ETH_DEVICES[0]}"
 
-    CNCTD_STRING="\${color green}CONNECTED
-\${voffset 4}\${color #505050}IP on $DEVICE \$alignr \${color #AAAAAA}\${addr $DEVICE}
-\${color #505050}Down \$alignr \${color #AAAAAA}\${downspeed $DEVICE}/sec
-\${color #505050}Up \$alignr \${color #AAAAAA}\${upspeed $DEVICE}/sec
-\${color #505050}Downloaded: \$alignr \${color #AAAAAA}\${totaldown $DEVICE}
-\${color #505050}Uploaded: \$alignr \${color #AAAAAA}\${totalup $DEVICE}"
+    CNCTD_STRING=$(<$HOME/.config/.txt)
     
     # For Raspberry Pis with multiple ports, create dynamic variables
     for i in "${!ETH_DEVICES[@]}"; do
