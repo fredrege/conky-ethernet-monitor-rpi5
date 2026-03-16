@@ -1,8 +1,8 @@
 # Network Status Upgrade for Conky on Raspberry Pi
 
-On a Rasberry Pi 5, Conky's `${if_up}` function works well with the native wi-fi device (wlan0). But for the Pi's default ethernet port (end0), `${if_up}` doesn't update on some port state changes.
+Conky's `${if_up}` monitoring function works well with native Wi-Fi devices (wlan0). But for default ethernet ports (eth0 or end0), `${if_up}` doesn't update on some port state changes.
 
-This repo solves the ethernet monitoring problem with a custom listener.
+This repo solves Conky's ethernet monitoring problem with a custom listener. It also adds better visibility to your port's current status.
 
 ## Features
 
