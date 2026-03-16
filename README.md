@@ -6,16 +6,18 @@ This repo solves Conky's ethernet monitoring problem with a custom listener. It 
 
 ## Features
 
-- **Event-Driven Networking**  
-Uses `nmcli monitor` command to detect a state change with 0% idle CPU usage.
+- **Event-Driven Monitoring**  
+Instead if constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
 - **Modular Design**  
-A `Systemd` service handleS background logic so Conky stays lean.
+A `Systemd` service handles background logic so Conky stays lean.
 	
 ## Requirements
-- An updated and upgraded Linux OS (tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors)
-- Conky desktop monitor (installed and running on startup before you install this repository.
-If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
-- Run `nmcli -v` from your terminal. If it returns a result, your system should have access to the utility.
+- An updated and upgraded Linux OS
+Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
+- Conky desktop monitor
+Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
+- An up and running NetworkManager utility
+Run `nmcli -t` from your terminal to confirm.
 
 ## Installation
 1. Clone the repository  
