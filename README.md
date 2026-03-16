@@ -33,22 +33,13 @@ Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)
 	```
 	nano $HOME/.conkyrc
 	```
-	Add this line within the file's `conky.text` markup to display the ethernet monitor:
+	Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later).
+	Replace the default markup with the following:
 	```
-	conky.text = [[
-	
-	...
-	
 	${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
-	
-	...
-	
-	]]
 	```
 	
-	The monitor script will create `eth_status.txt`.
-	
-	Save and close `.conkyrc`. If `.conkyrc` was running, it will restart automatically. 
+	Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor. 
 
 ## Troubleshooting
 
