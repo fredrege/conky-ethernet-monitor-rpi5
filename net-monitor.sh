@@ -3,7 +3,7 @@
 #An event listener looking for STATE changes on raspberry pi ethernet ports. On changes, writes to a tmp file read by (and displayed by) a conky desktop monitor.
 
 STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our SSD
-
+MRKUP_FILE="${HOME}/.config/conky/eth-markup.txt"
 ### end of variable declarations
 
 #1. Let the desktop settle in after login
@@ -22,7 +22,7 @@ STATE_FILE="/tmp/eth_status.txt" #/tmp lives in RAM so we're not beating up our 
     # Assign the first detected device to your primary variable
     DEVICE="${ETH_DEVICES[0]}"
 
-    MRKUP_FILE="${HOME}/.config/conky/eth-markup.txt"
+    
     CNCTD_STRING="$(cat "$MRKUP_FILE")"
     
     # For Raspberry Pis with multiple ports, create dynamic variables
