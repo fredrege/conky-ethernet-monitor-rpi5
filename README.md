@@ -22,13 +22,13 @@ A `Systemd` service handles background logic so Conky stays lean.
 ## Installation
 1. Clone the repository  
 ```
-    cd $HOME
+	cd $HOME
     git clone https://github.com/fredrege/conky-ethernet-monitor-rpi5.git
     cd conky-ethernet-monitor-rpi5
 ```
 2. Run the installer
 ```
-./install.sh
+	./install.sh
 ```
 3. Update Conky  
 Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)  
