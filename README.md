@@ -31,7 +31,7 @@ cd conky-ethernet-monitor-rpi5
 ./install.sh
 ```
 3. Update Conky  
-Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory)  
+Open `.conkyrc` in your favorite editor (it's usually in the `$HOME` directory). Use the following to edit via nano in your terminal:  
 ```
  nano $HOME/.conkyrc
 ```
