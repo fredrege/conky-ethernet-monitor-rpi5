@@ -14,7 +14,7 @@ This repo solves Conky's ethernet monitoring problem with a custom listener. It 
 Instead if constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
 - **Modular Design**  
 A `Systemd` service handles background logic so Conky stays lean.
-- **Clear Status Indication**  
+- **Clearer Status Indication**  
   A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
 	
 ## Requirements
