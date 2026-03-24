@@ -15,6 +15,8 @@ This repo seeks to solve Conky's ethernet monitoring problem with a custom liste
   Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
 - An up and running NetworkManager utility  
   Run `nmcli -t` from your terminal to confirm.
+- `awk` and `sed`: text processing and manipulation commands in Linux
+  Type `awk --version` and `sed --version` in your terminal to confirm.
 - A cursory knowledge of Conky's custom markup syntax. Even if you've never seen it before, but you know HTML or Markdown, you should be able to understand it in a few minutes.
 
 ## Features
@@ -83,25 +85,26 @@ Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1
 ```
     killall conky
 ```
-1. Stop and disable the service:
+2. Stop and disable the service:
 ```
     systemctl --user stop net-monitor.service
     systemctl --user disable net-monitor.service
 ```
-2. Remove the service file:
+3. Remove the service file:
 ```
     rm $HOME/.config/systemd/user/net-monitor.service
     systemctl --user daemon-reload
 ```
 
-3. Remove the scripts and temporary files:
+4. Remove the scripts and temporary files:
 ```
     rm $HOME/bin/net-monitor.sh
     rm -rf $HOME/bin/.config/conky
     rm /tmp/eth_status.txt
 ```
+Note that removing the directory `$HOME/bin/.config/conky` will also delete the custom markup file in the associated path: `$HOME/bin/.config/conky/eth-markup.txt`.
 
-4. Remove the installation directory:
+5. Remove the installation directory:
 ```
     cd $HOME
     rm -rf conky-network-upgrade
