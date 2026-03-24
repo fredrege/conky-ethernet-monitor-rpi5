@@ -22,7 +22,7 @@ This repo seeks to solve Conky's ethernet monitoring problem with a custom liste
 ## Features
 
 - **Event-Driven Monitoring**  
-Instead if constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
+Instead of constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
 - **Modular Design**  
 A `Systemd` service handles background logic so Conky stays lean. As well we store long-form Conky markup in a separate configuration file (`eth-markup.txt`) for easier styling without editing the core logic script.
 - **Clearer Status Indication**  
@@ -53,7 +53,7 @@ ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor.
 
 6. Test your installation:  
-While watching your Conky desktop utility, plug in and unlug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
+While watching your Conky desktop utility, plug in and unplug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
 
 ## Uninstallation
 
@@ -74,6 +74,7 @@ rm -rf conky-network-upgrade
 3. Restore your .conkyrc configuration file:
    Hopefully, you backed up or commented out the original *Network* section in $HOME/.conkyrc.
    If you did, either restore the backup file or uncomment the original Conky markup, save, and exit.
+
 4. restart Conky:
 ```
 conky
@@ -95,7 +96,6 @@ Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1
     rm $HOME/.config/systemd/user/net-monitor.service
     systemctl --user daemon-reload
 ```
-
 4. Remove the scripts and temporary files:
 ```
     rm $HOME/bin/net-monitor.sh
