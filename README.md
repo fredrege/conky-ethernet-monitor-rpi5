@@ -30,8 +30,8 @@ A `Systemd` service handles background logic so Conky stays lean.
 1. Clone the repository:  
 ```
 cd $HOME
-git clone https://github.com/fredrege/conky-network-monitor.git
-cd conky-network-monitor
+git clone https://github.com/fredrege/conky-network-upgrade.git
+cd conky-network-upgrade
 ```
 2. Run the installer:
 ```
@@ -60,7 +60,7 @@ To remove these Conky customizations and stop the associated background processe
 ### Automated Uninstall (Recommended)
 1. Run the provided uninstall script:
 ```
-cd $HOME/conky-network-ugrade
+cd $HOME/conky-network-upgrade
 chmod +x uninstall.sh
 ./uninstall.sh
 ```
