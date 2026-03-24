@@ -122,7 +122,11 @@ Note that removing the directory `$HOME/bin/.config/conky` will also delete the 
     cd $HOME
     rm -rf conky-network-upgrade
 ```
-
+6. Restart Conky:
+```
+conky
+```
+ 
 ## Troubleshooting
 
 - Your conky window resizes into a small window during OS startup.
