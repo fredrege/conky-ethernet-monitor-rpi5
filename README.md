@@ -22,7 +22,7 @@ This repo seeks to solve Conky's ethernet monitoring problem with a custom liste
 - **Event-Driven Monitoring**  
 Instead if constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
 - **Modular Design**  
-A `Systemd` service handles background logic so Conky stays lean.
+A `Systemd` service handles background logic so Conky stays lean. As well we store long-form Conky markup in a separate configuration file (`eth-markup.txt`) for easier styling without editing the core logic script.
 - **Clearer Status Indication**  
   A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
 
@@ -67,7 +67,7 @@ chmod +x uninstall.sh
 2. Clean up... remove the repo directory:
 ```
 cd $HOME
-rm -rf conky-netork-upgrade
+rm -rf conky-network-upgrade
 ```
 3. Restore your .conkyrc configuration file:
    Hopefully, you backed up or commented out the original *Network* section in $HOME/.conkyrc.
@@ -90,20 +90,21 @@ Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1
 ```
 2. Remove the service file:
 ```
-    rm ~/.config/systemd/user/net-monitor.service
+    rm $HOME/.config/systemd/user/net-monitor.service
     systemctl --user daemon-reload
 ```
 
 3. Remove the scripts and temporary files:
 ```
-    rm ~/bin/net-monitor.sh
-    rm -rf ~/bin/.config/conky
+    rm $HOME/bin/net-monitor.sh
+    rm -rf $HOME/bin/.config/conky
     rm /tmp/eth_status.txt
 ```
 
 4. Remove the installation directory:
 ```
-    rm -rf ~/conky-network-upgrade
+    cd $HOME
+    rm -rf conky-network-upgrade
 ```
 
 ## Troubleshooting
