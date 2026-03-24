@@ -42,7 +42,7 @@ Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` dir
 ```
  nano $HOME/.conkyrc
 ```
-4. Replace the networking content  
+4. Edit the *Network* content  
 Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later). Replace the default networking markup with the following:  
 ```
 ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
@@ -60,27 +60,50 @@ To remove these Conky customizations and stop the associated background processe
 ### Automated Uninstall (Recommended)
 1. Run the provided uninstall script:
 ```
+cd $HOME/conky-network-ugrade
 chmod +x uninstall.sh
 ./uninstall.sh
+```
+2. Clean up... remove the repo directory:
+```
+cd $HOME
+rm -rf conky-netork-upgrade
+```
+3. Restore your .conkyrc configuration file:
+   Hopefully, you backed up or commented out the original *Network* section in $HOME/.conkyrc.
+   If you did, either restore the backup file or uncomment the original Conky markup, save, and exit.
+4. restart Conky:
+```
+conky
 ```
 
 ### Manual Uninstall
 Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1F1E7;) and remove things by hand:
-1. Stop and disable the services:
+1. Kill Conky:
 ```
-    systemctl --user stop net-monitor.service os-info.service
-    systemctl --user disable net-monitor.service os-info.service
+    killall conky
 ```
-2. Remove the service files:
+1. Stop and disable the service:
+```
+    systemctl --user stop net-monitor.service
+    systemctl --user disable net-monitor.service
+```
+2. Remove the service file:
 ```
     rm ~/.config/systemd/user/net-monitor.service
-    rm ~/.config/systemd/user/os-info.service
     systemctl --user daemon-reload
 ```
+
 3. Remove the scripts and temporary files:
 ```
     rm ~/bin/net-monitor.sh
+    rm -rf ~/bin/.config/conky
     rm /tmp/eth_status.txt
+```
+
+4. Remove the installation directory:
+```
+    rm -rf ~/conky-network-upgrade
 ```
 
 ## Troubleshooting
