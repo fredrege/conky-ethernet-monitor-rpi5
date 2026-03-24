@@ -62,7 +62,7 @@ While watching your Conky desktop utility, plug in and unplug your Pi's ethernet
 ## Control the Service
 Start, stop, restart, and get the status of this custom listener from a single parameter:
 ```
-./net-monitor-ctrl.sh [start|stop|restart|status]
+net-monitor-ctrl.sh [start|stop|restart|status]
 ```
 > [!NOTE]
 > This script lives in $HOME/bin/, which is in $PATH, thus should be executable from any directory.
