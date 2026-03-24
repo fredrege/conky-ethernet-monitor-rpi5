@@ -83,13 +83,31 @@ chmod +x uninstall.sh
 cd $HOME
 rm -rf conky-network-upgrade
 ```
-3. Restore your .conkyrc configuration file:
-   Hopefully, you backed up or commented out the original *Network* section in $HOME/.conkyrc.
-   If you did, either restore the backup file or uncomment the original Conky markup, save, and exit.
+3. Restore the default *Network* monitoring markup
+>[!WARNING]
+>Don't skip this step. You don't want Conky looking for a file that isn't there.
+Open `.conkyrc`:
+```
+nano $HOME/.conkyrc
+```
+Now replace the custom markup with the orignal. It may have looked like this:
+>[!IMPORTANT]
+> Your version of Conky's *Network* content may have differed. This custom markup is provided as an example.
+```
+${font Arial:bold:size=10}${color #00AAFF}NETWORK ${color #0000AA}${hr 2}
+$font${color #505050}IP on eth0 $alignr ${color #AAAAAA}${addr eth0}
+
+${color #505050}Down $alignr ${color #AAAAAA}${downspeed eth0}/s
+${color #505050}Up $alignr ${color #AAAAAA}${upspeed eth0}/s
+
+${color #505050}Downloaded: $alignr  ${color #AAAAAA}${totaldown eth0}
+${color #505050}Uploaded: $alignr  ${color #AAAAAA}${totalup eth0}
+```
+Save your changes and close the editor.
 
 4. restart Conky:
 ```
-conky
+conky &
 ```
 
 ### Manual Uninstall
@@ -122,9 +140,31 @@ Note that removing the directory `$HOME/bin/.config/conky` will also delete the 
     cd $HOME
     rm -rf conky-network-upgrade
 ```
-6. Restart Conky:
+6. Restore the default *Network* monitoring markup
+>[!WARNING]
+>Don't skip this step. You don't want Conky looking for a file that isn't there.
+Open `.conkyrc`:
 ```
-conky
+nano $HOME/.conkyrc
+```
+Now replace the custom markup with the orignal. It may have looked like this:
+>[!IMPORTANT]
+> Your version of Conky's *Network* content may have differed. This custom markup is provided as an example.
+```
+${font Arial:bold:size=10}${color #00AAFF}NETWORK ${color #0000AA}${hr 2}
+$font${color #505050}IP on eth0 $alignr ${color #AAAAAA}${addr eth0}
+
+${color #505050}Down $alignr ${color #AAAAAA}${downspeed eth0}/s
+${color #505050}Up $alignr ${color #AAAAAA}${upspeed eth0}/s
+
+${color #505050}Downloaded: $alignr  ${color #AAAAAA}${totaldown eth0}
+${color #505050}Uploaded: $alignr  ${color #AAAAAA}${totalup eth0}
+```
+Save your changes and close the editor.
+
+7. Restart Conky:
+```
+conky &
 ```
  
 ## Troubleshooting
