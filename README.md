@@ -9,13 +9,13 @@ Conky's `${if_up}` monitoring function works well with native Wi-Fi devices (wla
 This repo seeks to solve Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
 
 ## Requirements
-- An updated and upgraded Linux OS  
+- An updated and upgraded Linux OS.  
   Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
-- Conky desktop monitor  
+- Conky desktop monitor.  
   Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
-- An up and running NetworkManager utility  
+- An up and running NetworkManager utility.   
   Run `nmcli -t` from your terminal to confirm.
-- `awk` and `sed`: text processing and manipulation commands in Linux
+- `awk` and `sed`: text processing and manipulation commands in Linux.  
   Type `awk --version` and `sed --version` in your terminal to confirm.
 - A cursory knowledge of Conky's custom markup syntax. Even if you've never seen it before, but you know HTML or Markdown, you should be able to understand it in a few minutes.
 
@@ -24,7 +24,7 @@ This repo seeks to solve Conky's ethernet monitoring problem with a custom liste
 - **Event-Driven Monitoring**  
 Instead of constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
 - **Modular Design**  
-A `Systemd` service handles background logic so Conky stays lean. As well we store long-form Conky markup in a separate configuration file (`eth-markup.txt`) for easier styling without editing the core logic script.
+A `Systemd` service handles background logic so Conky stays lean. As well, we store long-form Conky markup in a separate configuration file (`eth-markup.txt`) for easier styling without editing the core logic script.
 - **Clearer Status Indication**  
   A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
 
