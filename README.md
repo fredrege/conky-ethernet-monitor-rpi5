@@ -12,7 +12,8 @@ This repo seeks to solve Conky's ethernet monitoring problem with a custom liste
 - An updated and upgraded Linux OS.  
   Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
 - Conky desktop monitor.  
-  Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
+> [!IMPORTANT]
+> Conky should be installed and running **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
 - An up and running NetworkManager utility.   
   Run `nmcli -t` from your terminal to confirm.
 - `awk` and `sed`: text processing and manipulation commands in Linux.  
@@ -45,17 +46,28 @@ Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` dir
  nano $HOME/.conkyrc
 ```
 4. Edit the *Network* content:  
-Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later). Replace the default networking markup with the following:  
+Within the file's `conky.text` section, replace the default networking markup with the following:  
 ```
 ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 ```
+>[!WARNING]
+> Back up your original `.conkyrc` file. At a minimum, comment out the original network activity markup so you can revert this change easily.
+
 5. Wrap it up:  
 Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor.
 
 6. Test your installation:  
 While watching your Conky desktop utility, plug in and unplug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
 
-## Uninstallation
+## Control the Service
+Start, stop, restart, and get the status of this custom listener from a single parameter:
+```
+./net-monitor-ctrl.sh [start|stop|restart|status]
+```
+> [!NOTE]
+> This script lives in $HOME/bin/, which is in $PATH, thus should be executable from any directory.
+
+## Uninstall
 
 To remove these Conky customizations and stop the associated background processes:
 
