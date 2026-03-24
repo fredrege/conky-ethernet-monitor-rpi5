@@ -10,7 +10,8 @@ MRKUP_FILE="${HOME}/.config/conky/eth-markup.txt" #the installer script put the 
 
 #2. Discover and store the ethernet device's name (etho on older Pis, end0 on rpi5)
     # Get all devices of type 'ethernet' and store them in an array
-    ETH_DEVICES=($(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="ethernet" {print $1}'))
+    # ETH_DEVICES=($(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="ethernet" {print $1}'))
+    ETH_DEVICES=($(nmcli -t -f DEVICE,TYPE device | awk -F: '($2=="ethernet") && ($1=="eth0" || $1=="end0") {print $1}'))
     
     # Check if we found anything at all
     if [ ${#ETH_DEVICES[@]} -eq 0 ]; then
