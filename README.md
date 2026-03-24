@@ -27,30 +27,30 @@ A `Systemd` service handles background logic so Conky stays lean.
   A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
 
 ## Installation
-1. Clone the repository  
+1. Clone the repository:  
 ```
 cd $HOME
 git clone https://github.com/fredrege/conky-network-monitor.git
 cd conky-network-monitor
 ```
-2. Run the installer
+2. Run the installer:
 ```
 ./install.sh
 ```
-3. Open your Conky configuration file  
-Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` directory). Use the following to edit via nano in your terminal:  
+3. Open your Conky configuration file:  
+Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` directory):  
 ```
  nano $HOME/.conkyrc
 ```
-4. Edit the *Network* content  
+4. Edit the *Network* content:  
 Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later). Replace the default networking markup with the following:  
 ```
 ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 ```
-5. Wrap it up  
+5. Wrap it up:  
 Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor.
 
-6. Test your installation  
+6. Test your installation:  
 While watching your Conky desktop utility, plug in and unlug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
 
 ## Uninstallation
