@@ -6,7 +6,16 @@
   
 Conky's `${if_up}` monitoring function works well with native Wi-Fi devices (wlan0), but not-so-much with default ethernet devices (eth0 or end0): some state changes don't update the UI.
 
-This repo solves Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
+This repo seeks to solve Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
+
+## Requirements
+- An updated and upgraded Linux OS  
+  Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
+- Conky desktop monitor  
+  Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
+- An up and running NetworkManager utility  
+  Run `nmcli -t` from your terminal to confirm.
+- A cursory knowledge of Conky's custom markup syntax. Even if you've never seen it before, but you know HTML or Markdown, you should be able to understand it in a few minutes.
 
 ## Features
 
@@ -16,15 +25,6 @@ Instead if constant polling, this upgrade uses `nmcli monitor` to detect state c
 A `Systemd` service handles background logic so Conky stays lean.
 - **Clearer Status Indication**  
   A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
-	
-## Requirements
-- An updated and upgraded Linux OS  
-  Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
-- Conky desktop monitor  
-  Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
-- An up and running NetworkManager utility  
-  Run `nmcli -t` from your terminal to confirm.
-- A cursory knowledge of Conky's custom markup syntax. Even if you've never seen it before, but you know HTML or Markdown, you should be able to understand it in a few minutes.
 
 ## Installation
 1. Clone the repository  
@@ -52,6 +52,36 @@ Save and close `.conkyrc`. If Conky was running, it should restart automatically
 
 6. Test your installation  
 While watching your Conky desktop utility, plug in and unlug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
+
+## Uninstallation
+
+To remove these Conky customizations and stop the associated background processes:
+
+### Automated Uninstall (Recommended)
+1. Run the provided uninstall script:
+```
+chmod +x uninstall.sh
+./uninstall.sh
+```
+
+### Manual Uninstall
+Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1F1E7;) and remove things by hand:
+1. Stop and disable the services:
+```
+    systemctl --user stop net-monitor.service os-info.service
+    systemctl --user disable net-monitor.service os-info.service
+```
+2. Remove the service files:
+```
+    rm ~/.config/systemd/user/net-monitor.service
+    rm ~/.config/systemd/user/os-info.service
+    systemctl --user daemon-reload
+```
+3. Remove the scripts and temporary files:
+```
+    rm ~/bin/net-monitor.sh
+    rm /tmp/eth_status.txt
+```
 
 ## Troubleshooting
 
