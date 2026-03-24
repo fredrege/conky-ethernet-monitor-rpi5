@@ -1,5 +1,3 @@
-#comment notes here...
-
 echo "\${color green}CONNECTED
 \${voffset 4}\${color #505050}IP on $DEVICE \$alignr \${color #AAAAAA}\${addr $DEVICE}
 \${color #505050}Down \$alignr \${color #AAAAAA}\${downspeed $DEVICE}/sec
