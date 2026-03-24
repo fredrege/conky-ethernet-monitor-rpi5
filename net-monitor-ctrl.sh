@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Controller for the Conky Network Monitor
-# Usage: ./monitor-ctrl.sh [start|stop|restart|status]
+# Usage: ./net-monitor-ctrl.sh [start|stop|restart|status]
 
 ACTION=$1
 SERVICE_NAME="net-monitor.service"
