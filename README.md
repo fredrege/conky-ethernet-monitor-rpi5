@@ -109,8 +109,12 @@ Save your changes and close the editor.
 ```
 conky &
 ```
+You're done. Conky should be up and running with the default *Network* experience displayed.
 
 ### Manual Uninstall
+>[!NOTE]
+>If you used the automated uninstall directions above, skip this section.
+
 Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1F1E7;) and remove things by hand:
 1. Kill Conky:
 ```
