@@ -14,9 +14,11 @@ mkdir -p "$CONFIG_DIR"
 
 echo "Directories created..."
 
-# 2. Copy the listener script and make it executable
+# 2. Copy the listener and controller scripts, and make them executable
 cp net-monitor.sh "$BIN_DIR/"
+cp net-monitor-ctrl.sh "$BIN_DIR/"
 chmod +x "$BIN_DIR/net-monitor.sh"
+chmod +x "$BIN_DIR/net-monitor-ctrl.sh"
 
 # 3. Copy the conky markup content
 cp eth-markup.txt "$CONFIG_DIR/"
@@ -34,11 +36,14 @@ chown $USER:$USER /tmp/eth_status.txt
 
 echo "Files copied..."
 
-# 6. Reload systemd and enable the service
-echo "Reloading systemd user daemon..."
+# 6. Reload systemd and enable the service for boot
+echo "🔄 Reloading systemd user daemon..."
 systemctl --user daemon-reload
 systemctl --user enable net-monitor.service
-systemctl --user start net-monitor.service
 
-echo "Installation complete!"
-echo "Don't forget to modify your .conkyrc file.\nRefer to the README.md file for details."
+# 7. Start the service using the controller
+"$BIN_DIR/net-monitor-ctrl.sh" start
+
+echo "✅ Installation complete!"
+echo "👉 Don't forget to modify your .conkyrc file."
+echo "👉 Refer to the README.md file for details."

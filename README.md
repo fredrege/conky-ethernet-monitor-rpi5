@@ -6,17 +6,8 @@
   
 Conky's `${if_up}` monitoring function works well with native Wi-Fi devices (wlan0), but not-so-much with default ethernet devices (eth0 or end0): some state changes don't update the UI.
 
-This repo solves Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
+This repo seeks to solve Conky's ethernet monitoring problem with a custom listener. It also adds clearer messaging as to your device's current status.
 
-## Features
-
-- **Event-Driven Monitoring**  
-Instead if constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
-- **Modular Design**  
-A `Systemd` service handles background logic so Conky stays lean.
-- **Clearer Status Indication**  
-  A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
-	
 ## Requirements
 - An updated and upgraded Linux OS  
   Tested on rpi3 and rpi5 running Debian OS - may work on other Linux flavors.
@@ -24,34 +15,101 @@ A `Systemd` service handles background logic so Conky stays lean.
   Installed and running on startup **before** you add this repository. If you're starting from scratch, consider installing [Pi-apps](https://pi-apps.io/install/) first, then install Conky from within the Pi-apps utility.
 - An up and running NetworkManager utility  
   Run `nmcli -t` from your terminal to confirm.
+- `awk` and `sed`: text processing and manipulation commands in Linux
+  Type `awk --version` and `sed --version` in your terminal to confirm.
 - A cursory knowledge of Conky's custom markup syntax. Even if you've never seen it before, but you know HTML or Markdown, you should be able to understand it in a few minutes.
 
+## Features
+
+- **Event-Driven Monitoring**  
+Instead of constant polling, this upgrade uses `nmcli monitor` to detect state changes with 0% idle CPU usage.
+- **Modular Design**  
+A `Systemd` service handles background logic so Conky stays lean. As well we store long-form Conky markup in a separate configuration file (`eth-markup.txt`) for easier styling without editing the core logic script.
+- **Clearer Status Indication**  
+  A bright green message when connected, and a clear red DISCONNECTED message when the device is not able to transfer data.
+
 ## Installation
-1. Clone the repository  
+1. Clone the repository:  
 ```
 cd $HOME
-git clone https://github.com/fredrege/conky-ethernet-monitor-rpi5.git
-cd conky-ethernet-monitor-rpi5
+git clone https://github.com/fredrege/conky-network-upgrade.git
+cd conky-network-upgrade
 ```
-2. Run the installer
+2. Run the installer:
 ```
 ./install.sh
 ```
-3. Open your Conky configuration file  
-Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` directory). Use the following to edit via nano in your terminal:  
+3. Open your Conky configuration file:  
+Open `.conkyrc` in your favorite editor (it's usually in your user's `$HOME` directory):  
 ```
  nano $HOME/.conkyrc
 ```
-4. Replace the networking content  
+4. Edit the *Network* content:  
 Within the file's `conky.text` section, comment out the existing ethernet activity markup (or backup `.conkyrc`, in case you want to revert later). Replace the default networking markup with the following:  
 ```
 ${color #AAAAAA}Ethernet Status: $alignr ${execp cat /tmp/eth_status.txt}
 ```
-5. Wrap it up  
+5. Wrap it up:  
 Save and close `.conkyrc`. If Conky was running, it should restart automatically and load the new monitor.
 
-6. Test your installation  
-While watching your Conky desktop utility, plug in and unlug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
+6. Test your installation:  
+While watching your Conky desktop utility, plug in and unplug your Pi's ethernet cable repeatedly. The `Ethernet Status` should toggle between verbose "CONNECTED" information and a shorter red "DISCONNECTED" statement, respectively.
+
+## Uninstallation
+
+To remove these Conky customizations and stop the associated background processes:
+
+### Automated Uninstall (Recommended)
+1. Run the provided uninstall script:
+```
+cd $HOME/conky-network-upgrade
+chmod +x uninstall.sh
+./uninstall.sh
+```
+2. Clean up... remove the repo directory:
+```
+cd $HOME
+rm -rf conky-network-upgrade
+```
+3. Restore your .conkyrc configuration file:
+   Hopefully, you backed up or commented out the original *Network* section in $HOME/.conkyrc.
+   If you did, either restore the backup file or uncomment the original Conky markup, save, and exit.
+
+4. restart Conky:
+```
+conky
+```
+
+### Manual Uninstall
+Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1F1E7;) and remove things by hand:
+1. Kill Conky:
+```
+    killall conky
+```
+2. Stop and disable the service:
+```
+    systemctl --user stop net-monitor.service
+    systemctl --user disable net-monitor.service
+```
+3. Remove the service file:
+```
+    rm $HOME/.config/systemd/user/net-monitor.service
+    systemctl --user daemon-reload
+```
+4. Remove the scripts and temporary files:
+```
+    rm $HOME/bin/net-monitor.sh
+    rm $HOME/bin/net-monitor-crl.sh
+    rm -rf $HOME/bin/.config/conky
+    rm /tmp/eth_status.txt
+```
+Note that removing the directory `$HOME/bin/.config/conky` will also delete the custom markup file in the associated path: `$HOME/bin/.config/conky/eth-markup.txt`.
+
+5. Remove the installation directory:
+```
+    cd $HOME
+    rm -rf conky-network-upgrade
+```
 
 ## Troubleshooting
 
