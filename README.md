@@ -107,7 +107,7 @@ Save your changes and close the editor.
 
 4. restart Conky:
 ```
-conky &
+conky -d
 ```
 You're done. Conky should be up and running with the default *Network* experience displayed.
 
@@ -168,7 +168,7 @@ Save your changes and close the editor.
 
 7. Restart Conky:
 ```
-conky &
+conky -d
 ```
  
 ## Troubleshooting
