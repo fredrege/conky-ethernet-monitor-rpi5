@@ -5,20 +5,16 @@ BIN_DIR="$HOME/bin"
 SYSTEMD_DIR="$HOME/.config/systemd/user"
 CONFIG_DIR="$HOME/.config/conky"
 
-echo "🗑️ Starting uninstallation..."
+echo "Starting uninstallation..."
 
 # 1. Stop Conky
 killall conky
 
-# 2. Stop the service using the controller
+# 2. Stop and disable the service using the controller
 if [ -f "$BIN_DIR/net-monitor-ctrl.sh" ]; then
-    echo "Stopping background services..."
+    echo "Stopping and disabling background services..."
     "$BIN_DIR/net-monitor-ctrl.sh" stop
 fi
-
-# 3. Disable the service so it doesn't boot up next time
-echo "Disabling systemd user services..."
-systemctl --user disable net-monitor.service 2>/dev/null
 
 # 4. Remove the service unit file
 echo "Removing systemd unit files..."
@@ -36,7 +32,7 @@ rm -f "$BIN_DIR/net-monitor-ctrl.sh"
 echo "Removing custom Conky markup..."
 rm -rf "$CONFIG_DIR"
 
-# 8. Clean up temporary state file
+# 8. Clean up network state file
 rm -f /tmp/eth_status.txt
 
-echo "✅ Uninstallation complete. Remember to restore your .conkyrc file and then restart Conky."
+echo "Uninstallation complete. Remember to restore your .conkyrc file and then restart Conky."

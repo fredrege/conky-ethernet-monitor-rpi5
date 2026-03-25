@@ -37,13 +37,14 @@ chown $USER:$USER /tmp/eth_status.txt
 echo "Files copied..."
 
 # 6. Reload systemd and enable the service for boot
-echo "🔄 Reloading systemd user daemon..."
+echo "Reloading systemd user daemon..."
 systemctl --user daemon-reload
-systemctl --user enable net-monitor.service
 
 # 7. Start the service using the controller
 "$BIN_DIR/net-monitor-ctrl.sh" start
 
-echo "✅ Installation complete!"
-echo "👉 Don't forget to modify your .conkyrc file."
-echo "👉 Refer to the README.md file for details."
+chmod +x uninstall.sh
+
+echo "Installation complete!"
+echo "Don't forget to modify your .conkyrc file."
+echo "Refer to the README.md file for details."
