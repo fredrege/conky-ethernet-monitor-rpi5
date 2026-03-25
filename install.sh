@@ -43,8 +43,6 @@ systemctl --user daemon-reload
 # 7. Start the service using the controller
 "$BIN_DIR/net-monitor-ctrl.sh" start
 
-chmod +x uninstall.sh
-
 echo "Installation complete!"
 echo "Don't forget to modify your .conkyrc file."
 echo "Refer to the README.md file for details."
