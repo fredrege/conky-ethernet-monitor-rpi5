@@ -133,7 +133,7 @@ Circumspect developers may prefer to see under the hood (or bonnet &#x1F1EC;&#x1
 4. Remove the scripts and temporary files:
 ```
     rm $HOME/bin/net-monitor.sh
-    rm $HOME/bin/net-monitor-crl.sh
+    rm $HOME/bin/net-monitor-ctrl.sh
     rm -rf $HOME/bin/.config/conky
     rm /tmp/eth_status.txt
 ```
